@@ -6,6 +6,7 @@ gem 'rails', '4.0.4'
 
 # App Server
 gem 'foreman', '~> 0.63'
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'puma'
 
 # Database
