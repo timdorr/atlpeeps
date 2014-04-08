@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Atlpeeps::Application.load_tasks
+ATLpeeps::Application.load_tasks
