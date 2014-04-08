@@ -38,3 +38,8 @@ group :development do
   gem 'quiet_assets'
   gem 'meta_request'
 end
+
+# Authentication
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
