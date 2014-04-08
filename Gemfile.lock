@@ -166,8 +166,8 @@ DEPENDENCIES
   rails (= 4.0.4)
   rspec
   rspec-rails
-  sass-rails (~> 4.0.2)
-  slim-rails (~> 2.0)
+  sass-rails (~> 4.0.3)
+  slim-rails (~> 2.1)
   spring
   spring-commands-rspec
   uglifier (>= 1.3.0)

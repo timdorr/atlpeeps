@@ -12,8 +12,8 @@ gem 'puma'
 gem 'pg'
 
 # Assets
-gem 'slim-rails', '~> 2.0'
-gem 'sass-rails', '~> 4.0.2'
+gem 'slim-rails', '~> 2.1'
+gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 
