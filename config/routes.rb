@@ -1,5 +1,6 @@
 ATLpeeps::Application.routes.draw do
   resources :users
+  resource :settings
 
   # Omniauth
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
