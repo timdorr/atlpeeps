@@ -1,26 +1,25 @@
 class SessionsController < ApplicationController
   def create
-    auth = request.env['omniauth.auth']
-
-    @identity = Identity.find_with_omniauth(auth)
-    if @identity.nil?
-      @identity = Identity.first_or_create_with_omniauth(auth)
-    end
+    @identity = Identity.first_or_create_with_omniauth(request.env['omniauth.auth'])
 
     if signed_in?
       if @identity.user == current_user
-        redirect_to root_url, notice: "Already linked that account!"
+        redirect_to settings_path, notice: "You're already linked that account."
       else
         @identity.user = current_user
         @identity.save!
-        redirect_to root_url, notice: "Successfully linked that account!"
+        redirect_to settings_path, flash: {success: "Connected to your #{@identity.provider_title} account."}
       end
     else
       if @identity.user.present?
         self.current_user = @identity.user
-        redirect_to root_url, notice: "Signed in!"
+        redirect_to root_path
       else
-        redirect_to root_url, notice: "Please finish registering"
+        self.current_user = User.create(name: @identity.name)
+        @identity.user = current_user
+        @identity.save!
+
+        redirect_to settings_path, flash: {success: "You've successfully set up an ATLpeeps account. Now fill out your profile."}
       end
     end
   end
