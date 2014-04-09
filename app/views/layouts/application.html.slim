@@ -9,10 +9,28 @@ html
     = csrf_meta_tags
 
   body
-    - flash.each do |name, msg|
-      div class=name = msg
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle data-toggle="collapse" data-target="#network-navbar"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href=root_path ATLpeeps
 
-    = yield
+        .collapse.navbar-collapse#network-navbar
+          ul.nav.navbar-nav.navbar-right
+            - if signed_in?
+              li: a href=settings_path = current_user.name
+              li: a href=logout_path Log Out
+            - else
+              li: a href="/auth/facebook" Sign In
+
+    .container
+      - flash.each do |name, msg|
+        .alert.alert-warning class=name = msg
+
+      = yield
 
     = javascript_include_tag "application"
     = yield(:bottom)
