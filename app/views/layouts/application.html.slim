@@ -21,7 +21,7 @@ html
         .collapse.navbar-collapse#network-navbar
           ul.nav.navbar-nav.navbar-right
             - if signed_in?
-              li: a href=settings_path = current_user.name
+              li: a href=profile_path = current_user.name
               li: a href=logout_path Log Out
             - else
               li: a href="/auth/facebook" Sign In

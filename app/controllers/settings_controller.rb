@@ -1,5 +1,9 @@
 class SettingsController < ApplicationController
-  def show
+  def profile
+
+  end
+
+  def accounts
 
   end
 end
