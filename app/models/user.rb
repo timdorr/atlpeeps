@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_attached_file :image, styles: {full: "500x500#", thumb: "100x100#"}, default_url: "/images/missing.png"
 
   validates :name, presence: true
+  validates_attachment_content_type :image, content_type: ["image/jpg", "image/jpeg", "image/png"]
 
   has_many :identities
 
