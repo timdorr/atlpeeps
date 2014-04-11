@@ -2,6 +2,17 @@ body {
   padding-top: 70px;
 }
 
+/* Settings */
+
+.profile {
+  @extend .row;
+
+  form {
+    @extend .col-md-12;
+    padding: 20px 35px;
+  }
+}
+
 .accounts {
   @extend .row;
 

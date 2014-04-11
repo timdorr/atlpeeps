@@ -1,0 +1,11 @@
+ul.nav.nav-tabs
+  li.active: a href=profile_path Profile
+  li: a href=accounts_path Linked Accounts
+
+.profile
+  = form_for @user, html: {class: ""} do |f|
+    .form-group
+      = f.label :image
+      = f.file_field :image
+
+    = f.submit "Save Profile", class: "btn btn-default"
