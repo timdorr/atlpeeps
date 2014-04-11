@@ -44,3 +44,7 @@ end
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
+
+# Image Files
+gem "paperclip", "~> 4.1"
+gem "aws-sdk"
