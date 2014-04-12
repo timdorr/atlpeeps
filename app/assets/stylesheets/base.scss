@@ -8,8 +8,13 @@ body {
   @extend .row;
 
   form {
-    @extend .col-md-12;
+    @extend .col-md-6;
     padding: 20px 35px;
+  }
+
+  .current-thumb {
+    @extend .help-block;
+    width: 100px;
   }
 }
 

@@ -3,9 +3,41 @@ ul.nav.nav-tabs
   li: a href=accounts_path Linked Accounts
 
 .profile
-  = form_for @user, html: {class: ""} do |f|
+  = form_for @user, url: profile_path, method: :post, html: {class: ""} do |f|
+    = f.hidden_field :id
+
+    - if @user.errors.any?
+      .alert.alert-danger
+        strong Your profile couldn't be updated. Here's why:
+        ul
+          - @user.errors.full_messages.each do |msg|
+            li = msg
+
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: "form-control input-lg"
+
     .form-group
       = f.label :image
-      = f.file_field :image
+      = image_tag @user.image.url(:thumb), class: "current-thumb"
+      .btn-group.help-block
+        a.btn.btn-default.dropdown-toggle data-toggle="dropdown"
+          | Choose your image
+          span.caret
+        ul.dropdown-menu
+          - if current_user.facebook
+            li: a href="#" Import from Facebook
+          - if current_user.twitter
+            li: a href="#" Import from Twitter
+          - if current_user.github
+            li: a href="#" Import from GitHub
 
-    = f.submit "Save Profile", class: "btn btn-default"
+    .form-group
+      = f.label :website
+      = f.text_field :website, class: "form-control"
+
+    .form-group
+      = f.label :bio
+      = f.text_area :bio, rows: 5, class: "form-control"
+
+    = f.submit "Save Profile", class: "btn btn-primary btn-lg"
