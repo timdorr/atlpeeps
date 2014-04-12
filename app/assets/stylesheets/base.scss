@@ -1,5 +1,14 @@
 body {
-  padding-top: 70px;
+  padding-top: 80px;
+}
+
+/* Layout */
+
+nav {
+  .logo {
+    @extend .navbar-brand;
+    @include background-img("logo.atlpeeps.png");
+  }
 }
 
 /* Settings */

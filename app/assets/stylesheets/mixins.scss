@@ -1,0 +1,9 @@
+@mixin background-img($image, $width: image-width($image)/2, $height: image-height($image)/2) {
+  display: block;
+  background-image: image-url($image);
+  background-size: $width $height;
+  width: $width;
+  height: $height;
+
+  -ms-behavior: url(asset_path("backgroundsize.min.htc"));
+}
