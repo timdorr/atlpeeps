@@ -24,7 +24,7 @@ html
               li: a href=profile_path = current_user.name
               li: a href=logout_path Log Out
             - else
-              li: a href="/auth/facebook" Sign In
+              li: a href=auth_path Sign Up / Log In
 
     .container
       - flash.each do |name, msg|

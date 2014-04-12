@@ -11,6 +11,27 @@ nav {
   }
 }
 
+/* Auth */
+
+.auth {
+  @extend .row;
+
+  .col-md-2 {
+    text-align: center;
+  }
+
+  i {
+    display: block;
+    font-size: 10em;
+  }
+
+  a:hover { text-decoration: none; }
+
+  .fa-facebook-square { color: #3b5999; }
+  .fa-twitter-square  { color: #55acee; }
+  .fa-github-square   { color: #444; }
+}
+
 /* Settings */
 
 .profile {

@@ -1,8 +1,9 @@
 ATLpeeps::Application.routes.draw do
   resources :users
 
-  get   '/profile', to: "users#edit"
-  post  '/profile', to: "users#update"
+  get   '/auth',     to: "sessions#index"
+  get   '/profile',  to: "users#edit"
+  post  '/profile',  to: "users#update"
   match '/accounts', to: "users#accounts", via: [:get, :post]
 
   # Omniauth

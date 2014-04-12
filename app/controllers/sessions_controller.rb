@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  def index
+  end
+
   def create
     @identity = Identity.first_or_create_with_omniauth(request.env['omniauth.auth'])
 

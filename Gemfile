@@ -17,6 +17,7 @@ gem 'slim-rails', '~> 2.1'
 gem 'sass-rails', '~> 4.0.3'
 gem 'compass-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'font-awesome-sass'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 
