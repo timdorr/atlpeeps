@@ -5,9 +5,15 @@ body {
 /* Layout */
 
 nav {
-  .logo {
+  .atlpeeps-logo {
     @extend .navbar-brand;
     @include background-img("logo.atlpeeps.png");
+    margin-right: 25px;
+  }
+
+  .atvpeeps-logo {
+    @extend .navbar-brand;
+    @include background-img("logo.atvpeeps.png");
   }
 }
 
