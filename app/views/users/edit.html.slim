@@ -55,7 +55,7 @@
       h5 Image
       = image_tag @user.image.url(:thumb), class: "current-thumb"
       #image-menu
-        a.btn.btn-default.dropdown-toggle data-toggle="dropdown"
+        a.btn.btn-primary.dropdown-toggle data-toggle="dropdown"
           | Choose your image
           span.caret
         ul.dropdown-menu
@@ -66,6 +66,9 @@
             li: a href="#" Import from Twitter
           - if current_user.github
             li: a href="#" Import from GitHub
+
+      br
+      a.remove-image href="#" Remove image
 
       = form_for @user, url: profile_path, method: :post, html: {class: "hide", id: "upload-form"} do |f|
         = f.hidden_field :id

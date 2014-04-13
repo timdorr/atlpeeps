@@ -87,17 +87,33 @@ nav {
     }
   }
 
-  .current-thumb {
-    @extend .help-block;
-    display: inline;
-    width: 100px;
+  .image {
+    .current-thumb {
+      display: inline;
+      width: 100px;
+      vertical-align: top;
+    }
+
+    #image-menu {
+      @extend .btn-group;
+    }
+
+    .remove-image {
+      display: inline-block;
+      width: 100px;
+      margin-top: 5px;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    #upload-form {
+      display: inline-block;
+    }
   }
 
-  #image-menu {
-    @extend .btn-group;
-  }
-
-  #upload-form {
-    display: inline-block;
+  .profile {
+    .input-lg {
+      width: 250px;
+    }
   }
 }
