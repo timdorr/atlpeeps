@@ -1,8 +1,51 @@
-ul.nav.nav-tabs
-  li.active: a href=profile_path Profile
-  li: a href=accounts_path Linked Accounts
-
 .profile
+
+  .accounts
+    h5 Linked Accounts
+
+    .panel.panel-primary
+      .panel-heading: h3.panel-title Facebook
+      .panel-body
+        - if current_user.facebook
+          | Linked to #{current_user.facebook.name}
+          img.pull-right src=current_user.facebook.image
+        - else
+          a.btn.btn-success href="/auth/facebook" Connect
+
+    .panel.panel-primary
+      .panel-heading: h3.panel-title Twitter
+      .panel-body
+        - if current_user.twitter
+          | Linked to #{current_user.twitter.name}
+          img.pull-right src=current_user.twitter.image
+        - else
+          a.btn.btn-success href="/auth/twitter" Connect
+
+    .panel.panel-primary
+      .panel-heading: h3.panel-title GitHub
+      .panel-body
+        - if current_user.github
+          | Linked to #{current_user.github.name}
+          img.pull-right src=current_user.github.image
+        - else
+          a.btn.btn-success href="/auth/github" Connect
+
+    .image
+      h5 Image
+      = image_tag @user.image.url(:thumb), class: "current-thumb"
+      .btn-group.help-block
+        a.btn.btn-default.dropdown-toggle data-toggle="dropdown"
+          | Choose your image
+          span.caret
+        ul.dropdown-menu
+          - if current_user.facebook
+            li: a href="#" Import from Facebook
+          - if current_user.twitter
+            li: a href="#" Import from Twitter
+          - if current_user.github
+            li: a href="#" Import from GitHub
+
+
   = form_for @user, url: profile_path, method: :post, html: {class: ""} do |f|
     = f.hidden_field :id
 
@@ -16,21 +59,6 @@ ul.nav.nav-tabs
     .form-group
       = f.label :name
       = f.text_field :name, class: "form-control input-lg"
-
-    .form-group
-      = f.label :image
-      = image_tag @user.image.url(:thumb), class: "current-thumb"
-      .btn-group.help-block
-        a.btn.btn-default.dropdown-toggle data-toggle="dropdown"
-          | Choose your image
-          span.caret
-        ul.dropdown-menu
-          - if current_user.facebook
-            li: a href="#" Import from Facebook
-          - if current_user.twitter
-            li: a href="#" Import from Twitter
-          - if current_user.github
-            li: a href="#" Import from GitHub
 
     .form-group
       = f.label :website

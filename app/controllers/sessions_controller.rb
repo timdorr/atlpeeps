@@ -7,11 +7,11 @@ class SessionsController < ApplicationController
 
     if signed_in?
       if @identity.user == current_user
-        redirect_to accounts_path, notice: "You're already linked that account."
+        redirect_to profile_path, notice: "You're already linked that account."
       else
         @identity.user = current_user
         @identity.save!
-        redirect_to accounts_path, flash: {success: "Connected to your #{@identity.provider_title} account."}
+        redirect_to profile_path, flash: {success: "Connected to your #{@identity.provider_title} account."}
       end
     else
       if @identity.user.present?
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
         @identity.user = current_user
         @identity.save!
 
-        redirect_to accounts_path, flash: {success: "You've successfully set up an ATLpeeps account. Now fill out your profile."}
+        redirect_to profile_path, flash: {success: "You've successfully set up an ATLpeeps account. Now fill out your profile."}
       end
     end
   end

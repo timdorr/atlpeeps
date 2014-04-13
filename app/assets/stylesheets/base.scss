@@ -37,23 +37,20 @@ nav {
 .profile {
   @extend .row;
 
+  .accounts {
+    @extend .col-md-6;
+
+    img {
+      width: 50px;
+    }
+  }
+
   form {
     @extend .col-md-6;
-    padding: 20px 35px;
   }
 
   .current-thumb {
     @extend .help-block;
     width: 100px;
-  }
-}
-
-.accounts {
-  @extend .row;
-
-  &:first-of-type { margin-top: 20px; }
-
-  img {
-    width: 50px;
   }
 }

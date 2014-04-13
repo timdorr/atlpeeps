@@ -4,7 +4,6 @@ ATLpeeps::Application.routes.draw do
   get   '/auth',     to: "sessions#index"
   get   '/profile',  to: "users#edit"
   post  '/profile',  to: "users#update"
-  match '/accounts', to: "users#accounts", via: [:get, :post]
 
   # Omniauth
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
