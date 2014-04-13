@@ -28,7 +28,7 @@ html
 
     .container
       - flash.each do |name, msg|
-        .alert.alert-warning class=name = msg
+        .alert class=name = msg
 
       = yield
 
