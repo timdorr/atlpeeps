@@ -54,17 +54,22 @@
     .image
       h5 Image
       = image_tag @user.image.url(:thumb), class: "current-thumb"
-      .btn-group
+      #image-menu
         a.btn.btn-default.dropdown-toggle data-toggle="dropdown"
           | Choose your image
           span.caret
         ul.dropdown-menu
+          li: a#upload-image href="#" Upload your own...
           - if current_user.facebook
             li: a href="#" Import from Facebook
           - if current_user.twitter
             li: a href="#" Import from Twitter
           - if current_user.github
             li: a href="#" Import from GitHub
+
+      = form_for @user, url: profile_path, method: :post, html: {class: "hide", id: "upload-form"} do |f|
+        = f.hidden_field :id
+        = f.file_field :image
 
 
     = form_for @user, url: profile_path, method: :post, html: {class: ""} do |f|

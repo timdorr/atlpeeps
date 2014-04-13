@@ -92,4 +92,12 @@ nav {
     display: inline;
     width: 100px;
   }
+
+  #image-menu {
+    @extend .btn-group;
+  }
+
+  #upload-form {
+    display: inline-block;
+  }
 }
