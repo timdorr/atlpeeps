@@ -34,23 +34,54 @@ nav {
 
 /* Settings */
 
-.profile {
+.settings {
   @extend .row;
 
-  .accounts {
+  .accounts,
+  .profile {
     @extend .col-md-6;
+  }
+
+  .accounts > ul {
+    @extend .list-group;
+  }
+
+  .account {
+    @extend .list-group-item;
+
+    h4 {
+      @extend .list-group-item-heading;
+    }
+
+    p {
+      @extend .list-group-item-text;
+      margin-left: 50px;
+      color: #777;
+    }
 
     img {
-      width: 50px;
+      @extend .pull-left;
+      width: 40px;
+      margin-right: 5px;
+    }
+
+    a {
+      @extend .pull-right;
+      margin-top: 5px;
     }
   }
 
-  form {
-    @extend .col-md-6;
+  .connect {
+    margin: 20px 0 0;
+
+    a {
+      margin-right: 10px;
+    }
   }
 
   .current-thumb {
     @extend .help-block;
+    display: inline;
     width: 100px;
   }
 }

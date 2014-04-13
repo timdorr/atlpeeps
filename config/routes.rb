@@ -7,6 +7,7 @@ ATLpeeps::Application.routes.draw do
 
   # Omniauth
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match '/deauth/:provider', to: 'sessions#remove', via: [:get, :post]
   match '/logout', to: 'sessions#destroy', via: [:get, :post]
 
   root "users#index"

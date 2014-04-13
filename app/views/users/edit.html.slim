@@ -1,39 +1,60 @@
-.profile
+.settings
 
   .accounts
-    h5 Linked Accounts
+    h3 Linked Accounts
 
-    .panel.panel-primary
-      .panel-heading: h3.panel-title Facebook
-      .panel-body
-        - if current_user.facebook
-          | Linked to #{current_user.facebook.name}
-          img.pull-right src=current_user.facebook.image
-        - else
-          a.btn.btn-success href="/auth/facebook" Connect
+    ul
+      - if current_user.facebook
+        li.account
+          a.btn.btn-danger href="/deauth/facebook" Disconnect
+          img src=current_user.facebook.image
+          h4
+            i.fa.fa-fw.fa-facebook-square
+            | Facebook
+          p Logged in as #{current_user.facebook.name}
 
-    .panel.panel-primary
-      .panel-heading: h3.panel-title Twitter
-      .panel-body
-        - if current_user.twitter
-          | Linked to #{current_user.twitter.name}
-          img.pull-right src=current_user.twitter.image
-        - else
-          a.btn.btn-success href="/auth/twitter" Connect
+      - if current_user.twitter
+        li.account
+          a.btn.btn-danger href="/deauth/twitter" Disconnect
+          img src=current_user.twitter.image
+          h4
+            i.fa.fa-fw.fa-twitter-square
+            | Twitter
+          p Logged in as #{current_user.twitter.name}
 
-    .panel.panel-primary
-      .panel-heading: h3.panel-title GitHub
-      .panel-body
-        - if current_user.github
-          | Linked to #{current_user.github.name}
-          img.pull-right src=current_user.github.image
-        - else
-          a.btn.btn-success href="/auth/github" Connect
+      - if current_user.github
+        li.account
+          a.btn.btn-danger href="/deauth/github" Disconnect
+          img src=current_user.github.image
+          h4
+            i.fa.fa-fw.fa-github-square
+            | GitHub
+          p Logged in as #{current_user.github.name}
+
+      - unless has_all_connections?
+        .connect
+          h4 Link your other social accounts
+          - unless current_user.facebook
+            a.btn.btn-primary href="/auth/facebook"
+              i.fa.fa-fw.fa-facebook
+              | Facebook
+          - unless current_user.twitter
+            a.btn.btn-primary href="/auth/twitter"
+              i.fa.fa-fw.fa-twitter
+              | Twitter
+          - unless current_user.github
+            a.btn.btn-primary href="/auth/github"
+              i.fa.fa-fw.fa-github
+              | GitHub
+
+
+  .profile
+    h3 Your Profile
 
     .image
       h5 Image
       = image_tag @user.image.url(:thumb), class: "current-thumb"
-      .btn-group.help-block
+      .btn-group
         a.btn.btn-default.dropdown-toggle data-toggle="dropdown"
           | Choose your image
           span.caret
@@ -46,26 +67,26 @@
             li: a href="#" Import from GitHub
 
 
-  = form_for @user, url: profile_path, method: :post, html: {class: ""} do |f|
-    = f.hidden_field :id
+    = form_for @user, url: profile_path, method: :post, html: {class: ""} do |f|
+      = f.hidden_field :id
 
-    - if @user.errors.any?
-      .alert.alert-danger
-        strong Your profile couldn't be updated. Here's why:
-        ul
-          - @user.errors.full_messages.each do |msg|
-            li = msg
+      - if @user.errors.any?
+        .alert.alert-danger
+          strong Your profile couldn't be updated. Here's why:
+          ul
+            - @user.errors.full_messages.each do |msg|
+              li = msg
 
-    .form-group
-      = f.label :name
-      = f.text_field :name, class: "form-control input-lg"
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: "form-control input-lg"
 
-    .form-group
-      = f.label :website
-      = f.text_field :website, class: "form-control"
+      .form-group
+        = f.label :website
+        = f.text_field :website, class: "form-control"
 
-    .form-group
-      = f.label :bio
-      = f.text_area :bio, rows: 5, class: "form-control"
+      .form-group
+        = f.label :bio
+        = f.text_area :bio, rows: 5, class: "form-control"
 
-    = f.submit "Save Profile", class: "btn btn-primary btn-lg"
+      = f.submit "Save Profile", class: "btn btn-primary btn-lg"

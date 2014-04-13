@@ -27,6 +27,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def remove
+    current_user.identities.where(provider: params[:provider]).first.destroy
+    redirect_to profile_path
+  end
+
   def destroy
     self.current_user = nil
     redirect_to root_url, notice: "Signed out!"
