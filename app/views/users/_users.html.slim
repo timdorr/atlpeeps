@@ -1,6 +1,6 @@
 .row
   - users.each do |user|
-    a.peep href=user.website
+    a.peep href=user.website_as_url
       = image_tag user.image.url(:full)
       .info
         .info-name = user.name

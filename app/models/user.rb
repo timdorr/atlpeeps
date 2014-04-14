@@ -44,4 +44,8 @@ class User < ActiveRecord::Base
   def clean_website
     website.match(URL_REGEX)[2..3].join(".")
   end
+
+  def website_as_url
+    URI::HTTP.build(host: clean_website)
+  end
 end
