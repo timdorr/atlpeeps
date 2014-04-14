@@ -63,8 +63,8 @@
             li: a href=import_path(provider: "facebook") Import from Facebook
           - if current_user.twitter
             li: a href=import_path(provider: "twitter") Import from Twitter
-          - if current_user.github
-            li: a href=import_path(provider: "github") Import from GitHub
+          /- if current_user.github
+          /  li: a href=import_path(provider: "github") Import from GitHub
 
       br
       a.remove-image href="#" Remove image
