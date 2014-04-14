@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
             format: { with: URL_REGEX, message:  "isn't a valid URL", multiline: true }
   validate :validate_categories
 
-  validates_attachment_content_type :image, content_type: ["image/jpg", "image/jpeg", "image/png"]
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_many :identities
 
