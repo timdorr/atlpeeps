@@ -4,7 +4,7 @@
       = image_tag user.image.url(:full)
       .info
         .info-name = user.name
-        .info-site = URI.parse(user.website).host
+        .info-site = user.clean_website
         - if user.categories.kind_of?(Enumerable)
           - user.categories.each do |category|
             .info-skill = category

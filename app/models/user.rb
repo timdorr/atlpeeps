@@ -4,13 +4,12 @@ class User < ActiveRecord::Base
                     convert_options: { full: "-quality 90", thumb: "-quality 90" },
                     default_url: "/images/missing.png"
 
+  URL_REGEX = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+
   validates :name, presence: true
   validates :website,
             presence: true,
-            format: {
-                with:  /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
-                message:  "isn't a valid URL",
-                multiline: true }
+            format: { with: URL_REGEX, message:  "isn't a valid URL", multiline: true }
   validate :validate_categories
 
   validates_attachment_content_type :image, content_type: ["image/jpg", "image/jpeg", "image/png"]
@@ -40,5 +39,9 @@ class User < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def clean_website
+    website.match(URL_REGEX)[2..3].join(".")
   end
 end
