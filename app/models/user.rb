@@ -31,9 +31,11 @@ class User < ActiveRecord::Base
       errors.add(:categories, "- Too many categories selected.")
     end
 
-    categories.each do |category|
-      unless category.empty? || CATEGORIES.include?(category)
-        errors.add(:categories, "contains an invalid category (#{category})")
+    if categories
+      categories.each do |category|
+        unless category.empty? || CATEGORIES.include?(category)
+          errors.add(:categories, "contains an invalid category (#{category})")
+        end
       end
     end
   end
