@@ -47,7 +47,6 @@
               i.fa.fa-fw.fa-github
               | GitHub
 
-
   .profile
     h3 Your Profile
 
@@ -71,9 +70,7 @@
       a.remove-image href="#" Remove image
 
       = form_for @user, url: profile_path, method: :post, html: {class: "hide", id: "upload-form"} do |f|
-        = f.hidden_field :id
         = f.file_field :image
-
 
     = form_for @user, url: profile_path, method: :post, html: {class: ""} do |f|
       = f.hidden_field :id
@@ -100,5 +97,6 @@
 
       - if @user.published?
         = f.submit "Update Profile", class: "btn btn-primary btn-lg"
+        a.btn.btn-link.pull-right href=profile_path(user: {published: false}) data-method="post" Unpublish Profile
       - else
-        = f.submit "Publish Profile", class: "btn btn-primary btn-lg"
+        = f.submit "Publish Profile", class: "btn btn-success btn-lg"

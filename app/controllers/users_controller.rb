@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:user][:id])
+    @user = current_user
     if @user.update(user_params)
       redirect_to profile_path
     else
