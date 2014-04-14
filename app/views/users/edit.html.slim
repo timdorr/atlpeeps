@@ -91,9 +91,9 @@
         = f.label :website
         = f.text_field :website, class: "form-control"
 
-      .form-group
-        = f.label :bio
-        = f.text_area :bio, rows: 5, class: "form-control"
+      /.form-group
+      /  = f.label :bio
+      /  = f.text_area :bio, rows: 5, class: "form-control"
 
       - if @user.published?
         = f.submit "Update Profile", class: "btn btn-primary btn-lg"
