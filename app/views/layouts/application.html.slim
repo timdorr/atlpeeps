@@ -16,16 +16,19 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.atlpeeps-logo href=root_path
-          a.atvpeeps-logo.hidden-sm.hidden-xs href="http://www.atvpeeps.net"
+          a.atlpeeps-logo href=root_url(domain: default_domain)
+          a.atvpeeps-logo.hidden-sm.hidden-xs href=root_url(domain: atv_domain)
 
         .collapse.navbar-collapse#network-navbar
           ul.nav.navbar-nav.navbar-right
             - if signed_in?
-              li: a href=profile_path = current_user.name
-              li: a href=logout_path Log Out
+              li: a href=profile_url(domain: default_domain) = current_user.name
+              li: a href=logout_url(domain: default_domain) Log Out
+            - elsif request.domain == default_domain
+              li: a href=auth_url(domain: default_domain) Sign Up / Log In
             - else
-              li: a href=auth_path Sign Up / Log In
+              li: a href=auth_url(domain: default_domain) Sign up on ATLpeeps
+
 
     .container
       - flash.each do |name, msg|
