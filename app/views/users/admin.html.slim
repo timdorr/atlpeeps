@@ -1,13 +1,23 @@
 .row
   .col-md-6
     ul.list-group
-      - @users.each do |user|
+      - @users.unapproved.each do |user|
           li.list-group-item
             a.btn.btn-primary.btn-sm.pull-right href=approve_user_path(user) data-method="post" Approve
             h4.list-group-item-heading = user.name
             p.ist-group-item-text
               ' Website:
               = user.website
-            p.ist-group-item-text
-              ' Bio:
-              = user.bio
+
+  .col-md-6
+    ul.list-group
+      - @users.each do |user|
+        li.list-group-item
+          - if user.atv
+            a.btn.btn-warning.btn-sm.pull-right href=villager_user_path(user) data-method="post" ATV
+          - else
+            a.btn.btn-success.btn-sm.pull-right href=villager_user_path(user) data-method="post" ATV
+          h4.list-group-item-heading = user.name
+          p.ist-group-item-text
+            ' Website:
+            = user.website

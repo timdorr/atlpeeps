@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-  before_filter :require_signed_in, only: [:edit, :update, :admin, :approve]
+  before_filter :require_signed_in, only: [:edit, :update, :admin, :approve, :villager]
 
   def index
-    @users = User.published.page(params[:page])
+    @users = User.published
+    @users = @users.villagers if request.domain.include?("atvpeeps")
+    @users = @users.page(params[:page])
   end
 
   def edit
@@ -26,12 +28,23 @@ class UsersController < ApplicationController
 
   def admin
     return redirect_to root_path unless current_user.admin?
-    @users = User.unapproved
+    @users = User.all
   end
 
   def approve
+    return redirect_to root_path unless current_user.admin?
+
     @user = User.find(params[:id])
     @user.update_attribute(:approved, true)
+
+    redirect_to admin_users_path
+  end
+
+  def villager
+    return redirect_to root_path unless current_user.admin?
+
+    @user = User.find(params[:id])
+    @user.update_attribute(:atv, !@user.atv)
 
     redirect_to admin_users_path
   end

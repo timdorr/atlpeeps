@@ -5,6 +5,7 @@ ATLpeeps::Application.routes.draw do
     end
     member do
       post :approve
+      post :villager
     end
   end
 

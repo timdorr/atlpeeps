@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_one :github,   -> { where(provider: "github")   }, class_name: "Identity"
 
   scope :published,  -> { where(published: true, approved: true) }
+  scope :villagers,  -> { where(atv: true) }
   scope :unapproved, -> { where(approved: false) }
 
   CATEGORIES = %w{Blogger Photographer Developer Designer Copywriter Entrepreneur SEO Artist Musician Writer CEO Investor Researcher}
