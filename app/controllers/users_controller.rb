@@ -16,6 +16,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def admin
+    return redirect_to root_path unless current_user.admin?
+    @users = User.unapproved
+  end
+
+  def approve
+    @user = User.find(params[:id])
+    @user.update_attribute(:approved, true)
+
+    redirect_to admin_users_path
+  end
+
   private
 
   def user_params

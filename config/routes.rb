@@ -1,5 +1,12 @@
 ATLpeeps::Application.routes.draw do
-  resources :users
+  resources :users do
+    collection do
+      get :admin
+    end
+    member do
+      post :approve
+    end
+  end
 
   get   '/auth',     to: "sessions#index"
   get   '/profile',  to: "users#edit"

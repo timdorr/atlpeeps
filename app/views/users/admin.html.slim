@@ -1,0 +1,13 @@
+.row
+  .col-md-6
+    ul.list-group
+      - @users.each do |user|
+          li.list-group-item
+            a.btn.btn-primary.btn-sm.pull-right href=approve_user_path(user) data-method="post" Approve
+            h4.list-group-item-heading = user.name
+            p.ist-group-item-text
+              ' Website:
+              = user.website
+            p.ist-group-item-text
+              ' Bio:
+              = user.bio
