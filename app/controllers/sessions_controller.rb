@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   before_filter :require_signed_in, only: [:remove]
 
   def index
+    redirect_to profile_path if signed_in?
   end
 
   def create
