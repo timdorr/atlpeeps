@@ -9,6 +9,9 @@ gem 'foreman', '~> 0.63'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'puma'
 
+# Heroku
+gem 'rails_12factor', group: :production
+
 # Database
 gem 'pg'
 
