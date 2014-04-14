@@ -26,12 +26,10 @@ class Identity < ActiveRecord::Base
   def image
     case provider
       when "facebook"
-        uri = URI(info["image"])
-        query = URI.decode_www_form(uri.query || []) << ["type", "large"]
-        uri.query = URI.encode_www_form(query)
+        uri = URI.parse(info["image"])
+        uri.scheme = "https"
         uri.to_s
       else
-        info["image"]
     end
   end
 end
