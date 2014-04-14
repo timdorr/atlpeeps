@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :require_signed_in, only: [:edit, :update, :admin, :approve]
+
   def index
     @users = User.published.page(params[:page])
   end

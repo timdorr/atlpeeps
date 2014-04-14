@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_filter :require_signed_in, only: [:remove]
+
   def index
   end
 

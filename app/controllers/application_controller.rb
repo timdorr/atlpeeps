@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  def require_signed_in
+    redirect_to root_path unless signed_in?
+  end
+
   private
 
   def current_user
