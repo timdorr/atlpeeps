@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
                     default_url: "/images/missing.png"
 
   validates :name, presence: true
+  validates :website, presence: true, format: { with: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/, message: "isn't a valid URL", multiline: true }
   validates_attachment_content_type :image, content_type: ["image/jpg", "image/jpeg", "image/png"]
 
   has_many :identities
