@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.published
+    @users = User.published.page(params[:page])
   end
 
   def edit

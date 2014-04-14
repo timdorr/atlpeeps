@@ -86,6 +86,9 @@ GEM
     json (1.8.1)
     jwt (0.1.11)
       multi_json (>= 1.5)
+    kaminari (0.15.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -232,6 +235,7 @@ DEPENDENCIES
   font-awesome-sass
   foreman (~> 0.63)
   jquery-rails
+  kaminari
   meta_request
   omniauth-facebook
   omniauth-github

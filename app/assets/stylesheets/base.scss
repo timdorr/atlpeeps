@@ -17,12 +17,52 @@ nav {
   }
 }
 
+/* Bootstrap Overrides */
+
 .alert.success {
   @extend .alert-success;
 }
 
 .alert.notice {
   @extend .alert-warning;
+}
+
+/* Main Listing */
+
+.peep {
+  @extend .col-sm-3;
+  @extend .col-md-3;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+
+  .info {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    bottom: -156px;
+    padding: 8px 10px;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    line-height: 28px;
+    transition: 0.15s bottom ease-in-out;
+
+    .info-name {
+      font-size: 18px;
+    }
+
+    .info-site {
+      color: #ddd;
+    }
+  }
+
+  &:hover .info {
+    bottom: -100px;
+  }
 }
 
 /* Auth */

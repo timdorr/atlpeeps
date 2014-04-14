@@ -1,0 +1,8 @@
+.row
+  - users.each do |user|
+    a.peep href=user.website
+      = image_tag user.image.url(:full)
+      .info
+        .info-name = user.name
+        .info-site = URI.parse(user.website).host
+        .info-skill Dude
