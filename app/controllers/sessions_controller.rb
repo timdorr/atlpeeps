@@ -21,9 +21,13 @@ class SessionsController < ApplicationController
         self.current_user = @identity.user
         redirect_to root_path
       else
-        self.current_user = User.create(name: @identity.name)
-        @identity.user = current_user
-        @identity.save!
+        user = @identity.build_user(name: @identity.name)
+        user.save(validate: false)
+
+        @identity.user = user
+        @identity.save
+
+        self.current_user = user
 
         redirect_to profile_path, flash: { "alert-success" => "You've successfully set up an ATLpeeps account. Now fill out your profile."}
       end
