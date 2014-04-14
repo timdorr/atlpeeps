@@ -30,6 +30,7 @@ class Identity < ActiveRecord::Base
         uri.scheme = "https"
         uri.to_s
       else
+        info["image"]
     end
   end
 end
