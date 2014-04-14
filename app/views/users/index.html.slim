@@ -1,2 +1,7 @@
+- unless signed_in?
+  .intro
+    h3 Welcome to ATLpeeps
+    p We are Atlanta's entrepreneurial, technical, and creative community. Lots of interesting things are happening in this town. This site is just the tip of the iceberg.
+
 - @users.each_slice(4) do |users|
   = render partial: "users", locals: { users: users }

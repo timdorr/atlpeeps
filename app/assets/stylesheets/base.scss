@@ -29,6 +29,21 @@ nav {
 
 /* Main Listing */
 
+.intro {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f4f8fa;
+  border-left: 3px solid #5bc0de;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
 .peep {
   @extend .col-sm-3;
   @extend .col-md-3;
