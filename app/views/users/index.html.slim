@@ -1,7 +1,14 @@
 - unless signed_in?
-  .intro
-    h3 Welcome to ATLpeeps
-    p We are Atlanta's entrepreneurial, technical, and creative community. Lots of interesting things are happening in this town. This site is just the tip of the iceberg.
+  - if request.domain.include?("atlpeeps")
+    .intro
+      h3 Welcome to ATLpeeps
+      p We are Atlanta's entrepreneurial, technical, and creative community. Lots of interesting things are happening in this town. This site is just the tip of the iceberg.
+  - else
+    .intro
+      h3 Welcome to ATVpeeps
+      p An offshoot of the ATLpeeps. We are the members of <a href="http://atlantatechvillage.com/">Atlanta Tech Village</a>.
+        We are the villagers. We are creative, entrepreneurial, and startup-focused.
+        We're building cool things and driving innovation. Come visit us and see what ATV and Atlanta can do.
 
 - @users.each_slice(4) do |users|
   = render partial: "users", locals: { users: users }
