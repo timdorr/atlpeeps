@@ -49,7 +49,7 @@ nav {
     background: rgba(0,0,0,0.75);
     color: white;
     line-height: 28px;
-    transition: 0.15s bottom ease-in-out;
+    transition: bottom 0.2s cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
     .info-name {
       font-size: 18px;
@@ -61,7 +61,7 @@ nav {
   }
 
   &:hover .info {
-    bottom: -100px;
+    bottom: -40px;
   }
 }
 
