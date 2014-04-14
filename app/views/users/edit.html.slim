@@ -60,11 +60,11 @@
         ul.dropdown-menu
           li: a#upload-image href="#" Upload your own...
           - if current_user.facebook
-            li: a href="#" Import from Facebook
+            li: a href=import_path(provider: "facebook") Import from Facebook
           - if current_user.twitter
-            li: a href="#" Import from Twitter
+            li: a href=import_path(provider: "twitter") Import from Twitter
           - if current_user.github
-            li: a href="#" Import from GitHub
+            li: a href=import_path(provider: "github") Import from GitHub
 
       br
       a.remove-image href="#" Remove image

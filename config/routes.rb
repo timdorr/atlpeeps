@@ -9,9 +9,10 @@ ATLpeeps::Application.routes.draw do
     end
   end
 
-  get   '/auth',     to: "sessions#index"
-  get   '/profile',  to: "users#edit"
-  post  '/profile',  to: "users#update"
+  get  '/auth',             to: "sessions#index"
+  get  '/profile',          to: "users#edit"
+  post '/profile',          to: "users#update"
+  get  '/import/:provider', to: "users#import", as: "import"
 
   # Omniauth
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

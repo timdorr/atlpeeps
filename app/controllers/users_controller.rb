@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_signed_in, only: [:edit, :update, :admin, :approve, :villager]
+  before_filter :require_signed_in, except: [:index]
 
   def index
     @users = User.published
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = current_user
 
     up = user_params
-    if up[:categories].blank?
+    if !up[:name].blank? && up[:categories].blank?
       up[:categories] = []
     end
 
@@ -24,6 +24,16 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def import
+    @user = current_user
+    @identity = @user.identities.where(provider: params[:provider]).first
+
+    @user.image = URI.parse(@identity.image)
+    @user.save
+
+    redirect_to profile_path
   end
 
   def admin
