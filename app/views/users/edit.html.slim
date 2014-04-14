@@ -91,6 +91,16 @@
         = f.label :website
         = f.text_field :website, class: "form-control"
 
+      .form-group#categories
+        label
+          ' Your Attributes
+          small.text-muted = "(Up to 3)"
+        br
+        = f.collection_check_boxes(:categories, User::CATEGORIES, :to_s, :to_s) do |b|
+          - template_object = b.instance_variable_get(:@template_object)
+          - def template_object.hidden_field_tag(*args); end
+          - b.label(class: "checkbox-inline") { b.check_box + b.value }
+
       /.form-group
       /  = f.label :bio
       /  = f.text_area :bio, rows: 5, class: "form-control"

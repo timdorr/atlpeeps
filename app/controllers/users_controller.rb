@@ -9,7 +9,13 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update(user_params)
+
+    up = user_params
+    if up[:categories].blank?
+      up[:categories] = []
+    end
+
+    if @user.update(up)
       redirect_to profile_path
     else
       render 'edit'
@@ -31,6 +37,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :image, :website, :bio, :published)
+    params.require(:user).permit(:name, :image, :website, :bio, :published, categories: [])
   end
 end
