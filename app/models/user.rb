@@ -28,15 +28,15 @@ class User < ActiveRecord::Base
 
   def validate_categories
     if categories && categories.size > 3
-      errors.add(:cateories, "- Too many categories selected.")
+      errors.add(:categories, "- Too many categories selected.")
     end
 
     if categories.blank?
-      errors.add(:cateories, "must have at least one selected")
+      errors.add(:categories, "must have at least one selected")
     else
       categories.each do |category|
         unless category.empty? || CATEGORIES.include?(category)
-          errors.add(:cateories, "contains an invalid category (#{category})")
+          errors.add(:categories, "contains an invalid category (#{category})")
         end
       end
     end
