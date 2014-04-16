@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def index
     @users = User.published
     @users = @users.villagers if request.domain.include?("atvpeeps")
+    @users = @users.order("RANDOM()")
     # @users = @users.page(params[:page])
   end
 
