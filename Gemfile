@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.1.1'
+ruby '2.1.2'
 
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.6'
 
 # App Server
 gem 'foreman', '~> 0.63'
